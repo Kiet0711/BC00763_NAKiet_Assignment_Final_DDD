@@ -12,38 +12,31 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BC00763_KietNA_Assignment_DDD
 {
-    public partial class frmFinancial : Form
+    public partial class frmFinancialReport : Form
     {
         string connectionString = "Data Source=KIE\\BC00763_KIETNA;Initial Catalog=DDD_Assignment;Integrated Security=True;";
-        public frmFinancial()
+        public frmFinancialReport()
         {
             InitializeComponent();
             chFinancial.Series["Series1"].XValueType = ChartValueType.Date;
         }
 
-        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+            string query = @"
+            SELECT DateReport, Profit
+            FROM vw_Revenue_Overview
+            WHERE DateReport BETWEEN @from AND @to
+            ORDER BY DateReport";
 
+            DataTable dt = GetData(query, dtpFrom.Value, dtpTo.Value);
+            LoadChart(dt, "DateReport", "Profit");
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void frmFinancialReport_Load(object sender, EventArgs e)
         {
-            this.Close();
-            frmBill formBill = new frmBill();
-            formBill.Show();
-        }
-        private DataTable GetData(string query, DateTime from, DateTime to)
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("@from", from);
-                da.SelectCommand.Parameters.AddWithValue("@to", to);
-
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
+            dtpFrom.Value = DateTime.Now.AddMonths(-1);
+            dtpTo.Value = DateTime.Now;
         }
         private void LoadChart(DataTable dt, string xField, string yField)
         {
@@ -58,14 +51,21 @@ namespace BC00763_KietNA_Assignment_DDD
                 );
             }
         }
-
-        private void frmFinancial_Load(object sender, EventArgs e)
+        private DataTable GetData(string query, DateTime from, DateTime to)
         {
-            dtpFrom.Value = DateTime.Now.AddMonths(-1);
-            dtpTo.Value = DateTime.Now;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("@from", from);
+                da.SelectCommand.Parameters.AddWithValue("@to", to);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
         }
 
-        private void btnSalesRevenue_Click(object sender, EventArgs e)
+        private void btnSaleRevenue_Click(object sender, EventArgs e)
         {
             string query = @"
              SELECT DateCreate, TotalIncome
@@ -77,7 +77,7 @@ namespace BC00763_KietNA_Assignment_DDD
             LoadChart(dt, "DateCreate", "TotalIncome");
         }
 
-        private void btnExpenses_Click(object sender, EventArgs e)
+        private void btnExpresses_Click(object sender, EventArgs e)
         {
             string query = @"
              SELECT ImportDate, TotalExpense + TotalSalary AS TotalExpense
@@ -87,18 +87,6 @@ namespace BC00763_KietNA_Assignment_DDD
 
             DataTable dt = GetData(query, dtpFrom.Value, dtpTo.Value);
             LoadChart(dt, "ImportDate", "TotalExpense");
-        }
-
-        private void btnRevenue_Click(object sender, EventArgs e)
-        {
-            string query = @"
-            SELECT DateReport, Profit
-            FROM vw_Revenue_Overview
-            WHERE DateReport BETWEEN @from AND @to
-            ORDER BY DateReport";
-
-            DataTable dt = GetData(query, dtpFrom.Value, dtpTo.Value);
-            LoadChart(dt, "DateReport", "Profit");
         }
 
     }

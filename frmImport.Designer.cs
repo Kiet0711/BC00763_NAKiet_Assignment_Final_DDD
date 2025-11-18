@@ -56,11 +56,11 @@
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Showcard Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label1.Location = new System.Drawing.Point(323, 9);
+            this.label1.Location = new System.Drawing.Point(275, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(264, 42);
+            this.label1.Size = new System.Drawing.Size(327, 42);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Import Goods";
+            this.label1.Text = "Import Products";
             // 
             // label2
             // 
@@ -112,6 +112,7 @@
             // 
             // lvProduct
             // 
+            this.lvProduct.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.lvProduct.FullRowSelect = true;
             this.lvProduct.HideSelection = false;
             this.lvProduct.Location = new System.Drawing.Point(25, 282);

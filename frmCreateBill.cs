@@ -167,7 +167,7 @@ namespace BC00763_KietNA_Assignment_DDD
                     }
 
                     string TypeOfCustomer = lbTypeOfCustomer.Text;
-                    formBillSaved formBillSaved = new formBillSaved(
+                    frmSaved formBillSaved = new frmSaved(
                              BillID.ToString(),
                              BillDate.ToString("dd-MM-YYYY"),
                              BillCreator,
@@ -321,6 +321,11 @@ namespace BC00763_KietNA_Assignment_DDD
             {
                 MessageBox.Show("Please select a product to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void listProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

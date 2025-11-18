@@ -201,6 +201,7 @@
             this.listProduct.Size = new System.Drawing.Size(481, 111);
             this.listProduct.TabIndex = 13;
             this.listProduct.UseCompatibleStateImageBehavior = false;
+            this.listProduct.SelectedIndexChanged += new System.EventHandler(this.listProduct_SelectedIndexChanged);
             // 
             // btnAddProduct
             // 

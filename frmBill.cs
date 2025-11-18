@@ -153,7 +153,7 @@ namespace BC00763_KietNA_Assignment_DDD
         private void btnFinancial_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmFinancial formFinancial = new frmFinancial();
+            frmFinancialReport formFinancial = new frmFinancialReport();
             formFinancial.Show();
         }
     }
