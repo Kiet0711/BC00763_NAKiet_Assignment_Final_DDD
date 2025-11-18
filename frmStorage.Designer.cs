@@ -37,6 +37,8 @@
             this.btnImportGoods = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +67,7 @@
             // dgvProduct
             // 
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduct.Location = new System.Drawing.Point(33, 217);
+            this.dgvProduct.Location = new System.Drawing.Point(33, 245);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersWidth = 51;
             this.dgvProduct.RowTemplate.Height = 24;
@@ -150,6 +152,31 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Search Product:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Goldenrod;
+            this.label3.Location = new System.Drawing.Point(427, 217);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 22);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Category of Product: ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.BackColor = System.Drawing.SystemColors.MenuText;
+            this.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCategory.ForeColor = System.Drawing.Color.Goldenrod;
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(612, 215);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(219, 24);
+            this.cbCategory.TabIndex = 13;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
             // frmStorage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,6 +184,8 @@
             this.BackgroundImage = global::BC00763_KietNA_Assignment_DDD.Properties.Resources.Logo_Biker_Shop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1097, 649);
+            this.Controls.Add(this.cbCategory);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnImportGoods);
             this.Controls.Add(this.btnDelete);
@@ -187,5 +216,7 @@
         private System.Windows.Forms.Button btnImportGoods;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbCategory;
     }
 }

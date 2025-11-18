@@ -36,6 +36,7 @@ namespace BC00763_KietNA_Assignment_DDD
         private void frmStorage_Load(object sender, EventArgs e)
         {
             LoadProductData();
+            LoadCategoryList();
         }
         private void LoadProductData()
         {
@@ -217,6 +218,90 @@ namespace BC00763_KietNA_Assignment_DDD
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             LoadProductData();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadCategoryList()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "SELECT CategoryID, Category FROM Category";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+               
+                DataRow allRow = dt.NewRow();
+                allRow["CategoryID"] = 0;
+                allRow["Category"] = "All Categories";
+                dt.Rows.InsertAt(allRow, 0);
+
+              
+                cbCategory.DataSource = dt;
+                cbCategory.DisplayMember = "Category";    
+                cbCategory.ValueMember = "CategoryID";     
+            }
+        }
+        private void LoadProductByCategory(int categoryId)
+        {
+            string query;
+
+            if (categoryId == 0)
+            {
+               
+                query = @"
+            SELECT p.ProductID, p.ProductName, p.InventoryQuantity AS Amount, p.Price,
+                   c.Category, i.Brand, i.BatchNumber
+            FROM Product p
+            INNER JOIN Category c ON p.CategoryID = c.CategoryID
+            LEFT JOIN ProductImport i ON p.BatchNumber = i.BatchNumber";
+            }
+            else
+            {
+              
+                query = @"
+            SELECT p.ProductID, p.ProductName, p.InventoryQuantity AS Amount, p.Price,
+                   c.Category, i.Brand, i.BatchNumber
+            FROM Product p
+            INNER JOIN Category c ON p.CategoryID = c.CategoryID
+            LEFT JOIN ProductImport i ON p.BatchNumber = i.BatchNumber
+            WHERE p.CategoryID = @CategoryID";
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter(query, conn);
+
+                if (categoryId != 0)
+                    da.SelectCommand.Parameters.AddWithValue("@CategoryID", categoryId);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvProduct.DataSource = dt;
+
+                HighlightLowStock();
+            }
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCategory.SelectedValue == null)
+                return;
+
+            // Ngăn lỗi DataRowView
+            if (cbCategory.SelectedValue is DataRowView)
+                return;
+
+            int categoryId;
+            if (int.TryParse(cbCategory.SelectedValue.ToString(), out categoryId))
+            {
+                LoadProductByCategory(categoryId);
+            }
         }
     }
 }
