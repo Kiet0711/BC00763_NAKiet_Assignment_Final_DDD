@@ -97,9 +97,9 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
             frmAdd frmAdd = new frmAdd();
-            frmAdd.ShowDialog();
+            frmAdd.Show();
             LoadProductData();
         }
         public void RefreshData()
@@ -293,7 +293,7 @@ namespace BC00763_KietNA_Assignment_DDD
             if (cbCategory.SelectedValue == null)
                 return;
 
-            // Ngăn lỗi DataRowView
+           
             if (cbCategory.SelectedValue is DataRowView)
                 return;
 

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static BC00763_KietNA_Assignment_DDD.frmLogin;
 
 namespace BC00763_KietNA_Assignment_DDD
 {
@@ -137,6 +138,21 @@ namespace BC00763_KietNA_Assignment_DDD
             {
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        } 
+        }
+
+        private void frmAdd_Load(object sender, EventArgs e)
+        {
+            if (Session.CurrentUserRole != "Admin" && Session.CurrentUserRole != "Manager" && Session.CurrentUserRole !="Stock")
+            {
+                MessageBox.Show("Just Admin and Manager can use this function!",
+                                "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Close();
+                frmStaffManagement frmStaffManagement = new frmStaffManagement();
+                frmStaffManagement.Show();
+
+
+            }
+        }
     }
 }

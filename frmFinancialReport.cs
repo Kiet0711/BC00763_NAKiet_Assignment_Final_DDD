@@ -23,6 +23,7 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (!ValidateDateRange()) return;
             string query = @"
             SELECT DateReport, Profit
             FROM vw_Revenue_Overview
@@ -67,6 +68,7 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void btnSaleRevenue_Click(object sender, EventArgs e)
         {
+            if (!ValidateDateRange()) return;
             string query = @"
              SELECT DateCreate, TotalIncome
              FROM vw_Revenue_Income
@@ -79,6 +81,7 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void btnExpresses_Click(object sender, EventArgs e)
         {
+            if (!ValidateDateRange()) return;
             string query = @"
              SELECT ImportDate, TotalExpense + TotalSalary AS TotalExpense
              FROM vw_Revenue_Expense
@@ -89,5 +92,30 @@ namespace BC00763_KietNA_Assignment_DDD
             LoadChart(dt, "ImportDate", "TotalExpense");
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmBill frmBill = new frmBill();
+            frmBill.Show();
+        }
+
+        private void chFinancial_Click(object sender, EventArgs e)
+        {
+
+        }
+        private bool ValidateDateRange()
+        {
+            if (dtpFrom.Value < dtpTo.Value)
+            {
+                MessageBox.Show(
+                    "Date To can't bigger than Date From!Please Select Again!",
+                    "Date Select Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.chFinancial = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnSaleRevenue = new System.Windows.Forms.Button();
@@ -61,20 +61,24 @@
             // 
             this.chFinancial.BackColor = System.Drawing.Color.DimGray;
             this.chFinancial.BorderlineColor = System.Drawing.Color.DimGray;
-            chartArea3.Name = "ChartArea1";
-            this.chFinancial.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chFinancial.Legends.Add(legend3);
+            chartArea1.BackColor = System.Drawing.SystemColors.ControlDark;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Silver;
+            chartArea1.BorderColor = System.Drawing.Color.Gray;
+            chartArea1.Name = "ChartArea1";
+            this.chFinancial.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chFinancial.Legends.Add(legend1);
             this.chFinancial.Location = new System.Drawing.Point(12, 138);
             this.chFinancial.Name = "chFinancial";
             this.chFinancial.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chFinancial.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chFinancial.Series.Add(series1);
             this.chFinancial.Size = new System.Drawing.Size(604, 280);
             this.chFinancial.TabIndex = 3;
             this.chFinancial.Text = "chart1";
+            this.chFinancial.Click += new System.EventHandler(this.chFinancial_Click);
             // 
             // btnSaleRevenue
             // 
@@ -130,6 +134,7 @@
             this.btnBack.TabIndex = 7;
             this.btnBack.Text = "Back To Bill Management";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // dtpFrom
             // 
