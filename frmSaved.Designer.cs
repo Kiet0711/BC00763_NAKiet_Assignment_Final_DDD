@@ -340,7 +340,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "frmSaved";
-            this.Text = "Form1";
+            this.Text = "Bill Saved";
             this.Load += new System.EventHandler(this.frmSaved_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

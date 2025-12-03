@@ -46,11 +46,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label1.Location = new System.Drawing.Point(260, 9);
+            this.label1.Location = new System.Drawing.Point(586, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 30);
+            this.label1.Size = new System.Drawing.Size(179, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add or Update Product";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -173,7 +173,7 @@
             this.btnBack.ForeColor = System.Drawing.Color.Goldenrod;
             this.btnBack.Location = new System.Drawing.Point(16, 295);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(123, 29);
+            this.btnBack.Size = new System.Drawing.Size(157, 29);
             this.btnBack.TabIndex = 11;
             this.btnBack.Text = "Back to Storage";
             this.btnBack.UseVisualStyleBackColor = false;

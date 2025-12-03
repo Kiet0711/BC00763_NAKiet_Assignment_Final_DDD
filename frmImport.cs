@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static BC00763_KietNA_Assignment_DDD.frmLogin;
 
 namespace BC00763_KietNA_Assignment_DDD
 {
@@ -31,6 +32,15 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void frmImport_Load(object sender, EventArgs e)
         {
+            if (Session.CurrentUserRole != "Admin" && Session.CurrentUserRole != "Manager" && Session.CurrentUserRole != "Stock")
+            {
+                MessageBox.Show("Just Admin, Manager and Stock can use this function!",
+                                "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Close();
+                frmStorage frmStorage = new frmStorage();
+                frmStorage.Show();
+            }
             GenerateBatchNumber();
             LoadImportPartners();
             LoadBrand();
@@ -265,8 +275,12 @@ namespace BC00763_KietNA_Assignment_DDD
                 totalPrice = 0;
                 lbTotal.Text = "0 VND";
                 GenerateBatchNumber();
+
                 
             }
+            this.Close();
+            frmStorage frmStorage = new frmStorage();
+            frmStorage.Show();
         }
 
         private void cbBrand_SelectedIndexChanged(object sender, EventArgs e)

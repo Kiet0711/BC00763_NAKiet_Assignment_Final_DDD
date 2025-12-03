@@ -100,7 +100,6 @@ namespace BC00763_KietNA_Assignment_DDD
             this.Close();
             frmAdd frmAdd = new frmAdd();
             frmAdd.Show();
-            LoadProductData();
         }
         public void RefreshData()
         {

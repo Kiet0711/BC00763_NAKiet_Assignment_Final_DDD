@@ -105,7 +105,7 @@ namespace BC00763_KietNA_Assignment_DDD
         }
         private bool ValidateDateRange()
         {
-            if (dtpFrom.Value < dtpTo.Value)
+            if (dtpFrom.Value > dtpTo.Value)
             {
                 MessageBox.Show(
                     "Date To can't bigger than Date From!Please Select Again!",

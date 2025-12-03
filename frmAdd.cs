@@ -144,14 +144,12 @@ namespace BC00763_KietNA_Assignment_DDD
         {
             if (Session.CurrentUserRole != "Admin" && Session.CurrentUserRole != "Manager" && Session.CurrentUserRole !="Stock")
             {
-                MessageBox.Show("Just Admin and Manager can use this function!",
+                MessageBox.Show("Just Admin, Manager and Stock can use this function!",
                                 "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 this.Close();
-                frmStaffManagement frmStaffManagement = new frmStaffManagement();
-                frmStaffManagement.Show();
-
-
+                frmStorage frmStorage = new frmStorage();
+                frmStorage.Show();
             }
         }
     }

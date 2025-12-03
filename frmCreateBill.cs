@@ -94,12 +94,12 @@ namespace BC00763_KietNA_Assignment_DDD
 
                     if (count == 0)
                     {
-                        string insertCustomerQuery = "INSERT INTO Customer (CustomerID, CustomerName, TypeID)"
-                            + "VALUES (@CustomerID, @CustomerName,(SELECT TOP 1 TypeName FROM TypeOfCustomer WHERE TypeID= @TypeID))";
+                        string insertCustomerQuery = "INSERT INTO Customer (CustomerID, CustomerName, TypeID, NumberOfPrchases)"
+                            + "VALUES (@CustomerID, @CustomerName,(SELECT TOP 1 TypeID FROM TypeOfCustomer WHERE TypeName = @CustomerType ),1)";
                         SqlCommand insertCmd = new SqlCommand(insertCustomerQuery, conn, tran);
                         insertCmd.Parameters.AddWithValue("@CustomerID", CustomerID);
                         insertCmd.Parameters.AddWithValue("@CustomerName", CustomerName);
-                        insertCmd.Parameters.AddWithValue("@CustomerType", "Stranger");
+                        insertCmd.Parameters.AddWithValue("@CustomerType", TypeName);
                         insertCmd.ExecuteNonQuery();
                     }
                     else
@@ -191,7 +191,7 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            string Products = txtProduct.Text.Trim();
+                string Products = txtProduct.Text.Trim();
             int Amount = txtAmount.Text.Trim() == "" ? 0 : int.Parse(txtAmount.Text.Trim());
 
             using (SqlConnection conn = new SqlConnection(connectionString))
