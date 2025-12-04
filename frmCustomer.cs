@@ -174,5 +174,31 @@ namespace BC00763_KietNA_Assignment_DDD
                 }
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = @"
+                SELECT 
+                    c.CustomerID, 
+                    c.CustomerName, 
+                    t.TypeName, 
+                    c.NumberOfPrchases,
+                    ISNULL(v.TotalSpent, 0) AS TotalPurchase
+                FROM Customer c
+                JOIN TypeOfCustomer t ON c.TypeID = t.TypeID
+                LEFT JOIN v_TotalCustomerSpending v 
+                    ON c.CustomerID = v.CustomerID
+                WHERE c.CustomerName LIKE @Keyword OR CAST(c.CustomerID AS NVARCHAR) LIKE @Keyword";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvCustomer.DataSource = dt;
+            }
+        }
     }
 }

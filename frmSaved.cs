@@ -32,15 +32,22 @@ namespace BC00763_KietNA_Assignment_DDD
             this.TypeOfCustomer = typeOfCustomer;
             receivedItems = items;
 
-            lbBillID.Text = BillID;
+            label2.Text = BillID;
             lbCreator.Text = BillCreator;
             lbDateCreation.Text = BillDate;
             lbCustomerName.Text = CustomerName;
             lbCustomerType.Text = TypeOfCustomer;
             foreach (ListViewItem item in receivedItems)
+            
+            listTotalProduct.View = View.Details;
+            listTotalProduct.Columns.Add("Products", 125);
+            listTotalProduct.Columns.Add("Amount", 125);
+            listTotalProduct.Columns.Add("Price", 125);
+            foreach (ListViewItem item in receivedItems)
             {
                 listTotalProduct.Items.Add((ListViewItem)item.Clone());
             }
+
             decimal total = 0;
             foreach (ListViewItem item in listTotalProduct.Items)
             {
@@ -66,7 +73,7 @@ namespace BC00763_KietNA_Assignment_DDD
         {
             try
             {
-                string billID = lbBillID.Text;
+                string billID = label2.Text;
                 string paymentMethod = cboPaymentMethod.SelectedItem.ToString();
                 string updateQuery = "UPDATE Bill SET PaymentMethod = @PaymentMethod WHERE BillID = @billID";
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -104,10 +111,7 @@ namespace BC00763_KietNA_Assignment_DDD
             cboPaymentMethod.Items.Add("E-Wallet");
             cboPaymentMethod.Items.Add("Oder...");
 
-            listTotalProduct.View = View.Details;
-            listTotalProduct.Columns.Add("Products", 125);
-            listTotalProduct.Columns.Add("Amount", 125);
-            listTotalProduct.Columns.Add("Price", 125);
+            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -115,6 +119,16 @@ namespace BC00763_KietNA_Assignment_DDD
             this.Close();
             frmCreateBill frmCreateBill = new frmCreateBill();
             frmCreateBill.Show();
+        }
+
+        private void listTotalProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

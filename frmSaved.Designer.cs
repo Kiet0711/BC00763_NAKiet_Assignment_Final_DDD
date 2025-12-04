@@ -97,6 +97,7 @@
             this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 56;
             this.label2.Text = "label9";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -168,6 +169,7 @@
             this.listTotalProduct.Size = new System.Drawing.Size(497, 195);
             this.listTotalProduct.TabIndex = 50;
             this.listTotalProduct.UseCompatibleStateImageBehavior = false;
+            this.listTotalProduct.SelectedIndexChanged += new System.EventHandler(this.listTotalProduct_SelectedIndexChanged);
             // 
             // lbCustomerType
             // 
