@@ -209,9 +209,10 @@ namespace BC00763_KietNA_Assignment_DDD
 
         private void btnImportGoods_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmImport frmImport = new frmImport();
-            frmImport.ShowDialog();
-            LoadProductData();
+            frmImport.Show();
+          
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

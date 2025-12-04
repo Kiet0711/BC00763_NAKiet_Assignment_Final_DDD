@@ -40,6 +40,7 @@
             this.dgvBill = new System.Windows.Forms.DataGridView();
             this.btnFinancial = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnRefesh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,6 +184,19 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnRefesh
+            // 
+            this.btnRefesh.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRefesh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefesh.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnRefesh.Location = new System.Drawing.Point(573, 257);
+            this.btnRefesh.Name = "btnRefesh";
+            this.btnRefesh.Size = new System.Drawing.Size(180, 37);
+            this.btnRefesh.TabIndex = 13;
+            this.btnRefesh.Text = "Refesh";
+            this.btnRefesh.UseVisualStyleBackColor = false;
+            this.btnRefesh.Click += new System.EventHandler(this.btnRefesh_Click);
+            // 
             // frmBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -190,6 +204,7 @@
             this.BackgroundImage = global::BC00763_KietNA_Assignment_DDD.Properties.Resources.Logo_Biker_Shop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 447);
+            this.Controls.Add(this.btnRefesh);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnFinancial);
             this.Controls.Add(this.dgvBill);
@@ -226,5 +241,6 @@
         private System.Windows.Forms.DataGridView dgvBill;
         private System.Windows.Forms.Button btnFinancial;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnRefesh;
     }
 }

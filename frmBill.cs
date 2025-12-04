@@ -47,6 +47,8 @@ namespace BC00763_KietNA_Assignment_DDD
         {
             if (cbCreator.SelectedIndex >= 0)
                 SearchBill("s.StaffName = @Value", cbCreator.Text);
+            else
+                LoadAllBills();
         }
         private void LoadComboBoxes()
         {
@@ -97,12 +99,16 @@ namespace BC00763_KietNA_Assignment_DDD
         {
             if (cbCustomer.SelectedIndex >= 0)
                 SearchBill("c.CustomerName = @Value", cbCustomer.Text);
+            else
+                LoadAllBills();
         }
 
         private void cbBillID_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbBillID.SelectedIndex >= 0)
                 SearchBill("b.BillID = @Value", cbBillID.SelectedValue.ToString());
+            else
+                LoadAllBills();
         }
 
         private void ctpCreated_ValueChanged(object sender, EventArgs e)
@@ -155,6 +161,11 @@ namespace BC00763_KietNA_Assignment_DDD
             this.Close();
             frmFinancialReport formFinancial = new frmFinancialReport();
             formFinancial.Show();
+        }
+
+        private void btnRefesh_Click(object sender, EventArgs e)
+        {
+            LoadAllBills();
         }
     }
 }
