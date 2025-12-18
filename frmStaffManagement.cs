@@ -270,7 +270,7 @@ namespace BC00763_KietNA_Assignment_DDD
         {
             this.Close();
             frmAccount frmAccount = new frmAccount();
-            frmAccount.ShowDialog();
+            frmAccount.Show();
         }
     }
 }
